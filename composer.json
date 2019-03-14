@@ -1,0 +1,43 @@
+{
+    "name": "uisits/ipay",
+    "description": "Package for Ipay Payment Gateway",
+    "type": "library",
+    "keywords": ["payment", "uis", "uisits", "ipay", "requests"],
+    "version": "1.0",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chinwal Prasad",
+            "email": "pchin3@uis.edu"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "uisits\\ipay\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "uisits\\ipay\\IpayServiceProvider"
+            ],
+            "aliases": [
+                "uisits\\ipay\\app\\Facades\\IpayFacade"
+            ]
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5",
+        "orchestra/testbench": "3.7.*"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "uisits\\ipay\\Tests\\": "tests"
+        }
+    }
+}
