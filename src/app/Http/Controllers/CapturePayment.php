@@ -26,31 +26,9 @@ class CapturePayment extends Controller
         //Check against DB
         $transactionCheck = Ipay::where('token', '=', $request->TOKEN)->firstOrFail();
 
-        // //Hash the Fields
-        // $postParams =  array(
-        //     'action' => Config('ipay.credit-capture'),
-        //     'token' => $request->TOKEN,
-        //     'amount' => strval($transactionCheck->amount),
-        //     'amount1' => strval($transactionCheck->amount),
-        //     'numaccounts' => Config('ipay.NUM_ACCOUNTS'),
-        //     'chart1' => Config('ipay.CFOAP_CHART'),
-        //     'fund1' => Config('ipay.CFOAP_FUND'),
-        //     'org1' => Config('ipay.CFOAP_ORG'),
-        //     'account1' => Config('ipay.CFOAP_ACCOUNT'),
-        //     'program1' => Config('ipay.CFOAP_PROGRAM'),
-        //     'timestamp' => $date,
-        //     'certification' => $this->hashCapturePaymentFields($transactionCheck->token,$this->CheckNumberFormat(strval($transactionCheck->amount)))
-        // );
-
-        // $response = \Httpful\Request::post(Config('ipay.url-test'))
-        // ->body(http_build_query($postParams),\Httpful\Mime::FORM)
-        // ->addHeaders(['Content-Type' => 'application/x-www-form-urlencoded'])
-        // ->expectsPlain()
-        // ->send();
-
         $client = new Client();
 
-        $options = [
+        $params = [
             'form_params' => [
                 'action' => Config('ipay.credit-capture'),
                 'token' => $request->TOKEN,
@@ -67,7 +45,7 @@ class CapturePayment extends Controller
             ]
         ];
 
-        $response = $client->post(Config('ipay.url-test'), $options);
+        $response = $client->post(Config('ipay.url-test'), $params);
         $response = $response->getBody()->getContents();
         $formatedResponse = $this->processResponse($response, $transactionCheck->amount);
 

@@ -2,11 +2,6 @@
 return [
 
     /**
-     * Define hostname. Only specific hostname allowed.
-     */
-    'hostname' => env('IPAY_HOSTNAME',''),
-
-    /**
      * url to the payment site
      */
     'url-test' => env('IPAY_TEST_URL',''),

@@ -24,17 +24,6 @@ class SendPaymentRequest
 
         $date = Carbon::now('UTC')->format(Config('ipay.date-format'));
 
-        // $response = httpful\Request::post(Config('ipay.url-test'))
-        //     ->addHeaders(['Content-Type' => 'application/x-www-form-urlencoded'])
-        //     ->body(['action'             => Config('ipay.credit-action'),
-        //             'siteid'             => Config('ipay.siteid'),
-        //             'amount'             => $amount,
-        //             'market'             => Config('ipay.market'),
-        //             'timestamp'          => $date,
-        //             'certification'      => $hashCertificate],
-        //         Httpful\Mime::FORM)
-        //     ->expectsPlain()->send();
-
         $client = new Client();
 
         $options = [
@@ -48,7 +37,7 @@ class SendPaymentRequest
             ]
         ];
 
-        $response = $client->post(Config('ipay.url-test'),$options);
+        $response = $client->post(Config('ipay.url-test'), $options);
         $response = $response->getBody()->getContents();
         return $this->processResponse($response, $amount);
     }

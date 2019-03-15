@@ -1,11 +1,11 @@
 <?php
 
 namespace uisits\ipay\Tests;
-use Orchestra\Testbench\TestCase;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 use uisits\ipay\IpayServiceProvider;
 use uisits\ipay\app\Facades\IpayFacade;
 
-class BeginTesting extends TestCase
+class TestCase extends BaseTestCase
 {
     public $app_copy;
     /**

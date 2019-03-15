@@ -35,7 +35,7 @@ uisits/ipay is package for ipay payment gateway. Please refer to the inter depar
     ```
     Alternatively Add a Facade to your config/app.php (Under aliases array)
     ```
-    'Ipay' => uisits\ipay\app\Facade\IpayController::class,
+    'Ipay' => uisits\ipay\app\Facade\IpayFacade::class,
     ```
 3. Publish the resources
     ```
